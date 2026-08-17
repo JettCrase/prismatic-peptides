@@ -1,0 +1,195 @@
+// Simple JSON-file-backed order store.
+//
+// IMPORTANT FOR RENDER:
+// Orders must live on a persistent disk, not inside the deployed repo folder.
+// On Render, mount a Persistent Disk at /var/data and this app will store orders
+// at /var/data/db.json by default. You can override with ORDER_DB_PATH or DATA_DIR.
+
+const fs = require('fs');
+const path = require('path');
+
+const LEGACY_DB_PATH = path.join(__dirname, '..', 'data', 'db.json');
+
+function defaultDbPath() {
+  if (process.env.ORDER_DB_PATH) return process.env.ORDER_DB_PATH;
+  if (process.env.DATA_DIR) return path.join(process.env.DATA_DIR, 'db.json');
+  if (process.env.RENDER || process.env.RENDER_SERVICE_ID) return '/var/data/db.json';
+  return LEGACY_DB_PATH;
+}
+
+const DB_PATH = defaultDbPath();
+
+function ensureDbDirectory() {
+  const dir = path.dirname(DB_PATH);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function migrateLegacyDbIfNeeded() {
+  ensureDbDirectory();
+  if (DB_PATH === LEGACY_DB_PATH) return;
+  if (fs.existsSync(DB_PATH)) return;
+  if (fs.existsSync(LEGACY_DB_PATH)) {
+    fs.copyFileSync(LEGACY_DB_PATH, DB_PATH);
+  }
+}
+
+function initialData() {
+  return { orders: [], nextOrderId: 1 };
+}
+
+function load() {
+  migrateLegacyDbIfNeeded();
+  if (!fs.existsSync(DB_PATH)) {
+    const initial = initialData();
+    fs.writeFileSync(DB_PATH, JSON.stringify(initial, null, 2));
+    return initial;
+  }
+  return JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+}
+
+function save(data) {
+  ensureDbDirectory();
+  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+}
+
+// ---------- Orders (guest checkout, no accounts) ----------
+function paymentMatchAdjustmentCents(orderId, paymentProvider) {
+  if (paymentProvider === 'paypal') return 0;
+  return (Number(orderId) % 49) + 1;
+}
+
+function createOrder({ buyer, certifiedAt, items, subtotal, packagingFee, shippingFee, shippingMethod, orderFee, orderFeeRate, discountCode, discountAmount, total, paymentProvider, cryptoAsset }) {
+  const data = load();
+  const id = data.nextOrderId++;
+  const normalizedProvider = paymentProvider || 'manual';
+  const matchCents = paymentMatchAdjustmentCents(id, normalizedProvider);
+  const paymentMatchAdjustment = Math.round(matchCents) / 100;
+  const baseTotal = Number(total || 0);
+  const finalTotal = Math.round((baseTotal + paymentMatchAdjustment) * 100) / 100;
+  const order = {
+    id,
+    status: 'pending_payment',
+    payment_provider: normalizedProvider,
+    payment_reference: null,
+    crypto_asset: normalizedProvider === 'crypto' ? (cryptoAsset || 'BTC') : null,
+    paypal_order_id: null,
+    paid_at: null,
+    buyer,
+    certified_at: certifiedAt,
+    items,
+    subtotal,
+    packaging_fee: packagingFee,
+    shipping_fee: shippingFee,
+    shipping_method: shippingMethod || 'domestic',
+    order_fee: orderFee || 0,
+    order_fee_rate: orderFeeRate || 0,
+    discount_code: discountCode || null,
+    discount_amount: discountAmount || 0,
+    base_total: baseTotal,
+    payment_match_adjustment: paymentMatchAdjustment,
+    total: finalTotal,
+    notes: '',
+    created_at: new Date().toISOString(),
+  };
+  data.orders.push(order);
+  save(data);
+  return order;
+}
+
+function getAllOrders() {
+  const data = load();
+  return [...data.orders].sort((a, b) => b.id - a.id);
+}
+
+function getOrderById(id) {
+  const data = load();
+  return data.orders.find(o => o.id === Number(id)) || null;
+}
+
+function setPayPalOrderId(id, paypalOrderId) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.paypal_order_id = paypalOrderId || null;
+  save(data);
+  return order;
+}
+
+function markOrderPaid(id, paymentReference) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.status = 'paid';
+  order.payment_reference = paymentReference || order.payment_reference || null;
+  order.paid_at = new Date().toISOString();
+  save(data);
+  return order;
+}
+
+function isTxidUsed(txid) {
+  const data = load();
+  const normalized = String(txid).trim().toLowerCase();
+  return data.orders.some(o => o.payment_reference && String(o.payment_reference).trim().toLowerCase() === normalized);
+}
+
+function setPaymentReference(id, reference) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.payment_reference = reference;
+  save(data);
+  return order;
+}
+
+function updateOrderStatus(id, status) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.status = status;
+  save(data);
+  return order;
+}
+
+function updateOrderNotes(id, notes) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.notes = String(notes || '').slice(0, 2000);
+  save(data);
+  return order;
+}
+
+function markOrderBackupSent(id, channels = [], errors = []) {
+  const data = load();
+  const order = data.orders.find(o => o.id === Number(id));
+  if (!order) return null;
+  order.backup_sent_at = new Date().toISOString();
+  order.backup_channels = channels;
+  order.backup_errors = errors;
+  save(data);
+  return order;
+}
+
+function deleteOrder(id) {
+  const data = load();
+  const orderId = Number(id);
+  const index = data.orders.findIndex(o => o.id === orderId);
+  if (index === -1) return null;
+  const [removed] = data.orders.splice(index, 1);
+  save(data);
+  return removed;
+}
+function getStorageInfo() {
+  return {
+    dbPath: DB_PATH,
+    legacyDbPath: LEGACY_DB_PATH,
+    usingPersistentRenderPath: DB_PATH.replace(/\\/g, '/').startsWith('/var/data/'),
+    exists: fs.existsSync(DB_PATH),
+  };
+}
+
+module.exports = { createOrder, getAllOrders, getOrderById, setPayPalOrderId, markOrderPaid, updateOrderStatus, updateOrderNotes, deleteOrder, markOrderBackupSent, getStorageInfo, isTxidUsed, setPaymentReference };
+
+

@@ -1,0 +1,326 @@
+[
+  {
+    "sku": "AM50",
+    "name": "5-Amino-1MQ",
+    "spec": "50mg x1 vial",
+    "cost": 128,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 128
+  },
+  {
+    "sku": "AD2",
+    "name": "AOD-9604",
+    "spec": "2mg x1 vial",
+    "cost": 38,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 38
+  },
+  {
+    "sku": "AD5",
+    "name": "AOD-9604",
+    "spec": "5mg x1 vial",
+    "cost": 53,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 53
+  },
+  {
+    "sku": "ARA10",
+    "name": "ARA-290",
+    "spec": "10mg x1 vial",
+    "cost": 48,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 48
+  },
+  {
+    "sku": "BC10",
+    "name": "BPC-157",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 44
+  },
+  {
+    "sku": "CTX10",
+    "name": "Cartalax",
+    "spec": "10mg x1 vial",
+    "cost": 58,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 58
+  },
+  {
+    "sku": "CND5",
+    "name": "CJC-1295 without DAC",
+    "spec": "5mg x1 vial",
+    "cost": 38,
+    "category": "Peptide",
+    "group": "Growth Hormone",
+    "salePrice": 38
+  },
+  {
+    "sku": "DS10",
+    "name": "DSIP",
+    "spec": "10mg x1 vial",
+    "cost": 58,
+    "category": "Peptide",
+    "group": "Sleep",
+    "salePrice": 58
+  },
+  {
+    "sku": "ET10",
+    "name": "Epithalon",
+    "spec": "10mg x1 vial",
+    "cost": 38,
+    "category": "Peptide",
+    "group": "Longevity",
+    "salePrice": 38
+  },
+  {
+    "sku": "CU50",
+    "name": "GHK-Cu",
+    "spec": "50mg x1 vial",
+    "cost": 35,
+    "category": "Peptide",
+    "group": "Skin & Recovery",
+    "salePrice": 35
+  },
+  {
+    "sku": "CU100",
+    "name": "GHK-Cu",
+    "spec": "100mg x1 vial",
+    "cost": 53,
+    "category": "Peptide",
+    "group": "Skin & Recovery",
+    "salePrice": 53
+  },
+  {
+    "sku": "IP10",
+    "name": "Ipamorelin",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Growth Hormone",
+    "salePrice": 44
+  },
+  {
+    "sku": "KS10",
+    "name": "Kisspeptin-10",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Hormone",
+    "salePrice": 44
+  },
+  {
+    "sku": "KPV10",
+    "name": "KPV",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 44
+  },
+  {
+    "sku": "LC500",
+    "name": "L-Carnitine",
+    "spec": "500mg x1 vial",
+    "cost": 48,
+    "category": "Amino",
+    "group": "Metabolic",
+    "salePrice": 48
+  },
+  {
+    "sku": "LL10",
+    "name": "LL-37",
+    "spec": "10mg x1 vial",
+    "cost": 78,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 78
+  },
+  {
+    "sku": "MT1",
+    "name": "Melanotan I",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Skin & Recovery",
+    "salePrice": 44
+  },
+  {
+    "sku": "ML10",
+    "name": "Melanotan II",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Skin & Recovery",
+    "salePrice": 44
+  },
+  {
+    "sku": "MS10",
+    "name": "MOTS-c",
+    "spec": "10mg x1 vial",
+    "cost": 54,
+    "category": "Peptide",
+    "group": "Longevity",
+    "salePrice": 54
+  },
+  {
+    "sku": "OT10",
+    "name": "Oxytocin",
+    "spec": "10mg x1 vial",
+    "cost": 58,
+    "category": "Peptide",
+    "group": "Research",
+    "salePrice": 58
+  },
+  {
+    "sku": "PDA10",
+    "name": "PDA (Pentadeca-Arginate)",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 44
+  },
+  {
+    "sku": "P4110",
+    "name": "PT-141",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Research",
+    "salePrice": 44
+  },
+  {
+    "sku": "SK10",
+    "name": "Selank",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Nootropic",
+    "salePrice": 44
+  },
+  {
+    "sku": "XA10",
+    "name": "Semax",
+    "spec": "10mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Nootropic",
+    "salePrice": 44
+  },
+  {
+    "sku": "SMO5",
+    "name": "Sermorelin",
+    "spec": "5mg x1 vial",
+    "cost": 44,
+    "category": "Peptide",
+    "group": "Growth Hormone",
+    "salePrice": 44
+  },
+  {
+    "sku": "SLU50",
+    "name": "SLU-PP-332",
+    "spec": "50mg x1 vial",
+    "cost": 368,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 368
+  },
+  {
+    "sku": "SNAP10",
+    "name": "SNAP-8",
+    "spec": "10mg x1 vial",
+    "cost": 35,
+    "category": "Peptide",
+    "group": "Skin & Recovery",
+    "salePrice": 35
+  },
+  {
+    "sku": "SUR10",
+    "name": "Survodutide",
+    "spec": "10mg x1 vial",
+    "cost": 78,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 78
+  },
+  {
+    "sku": "BT10",
+    "name": "TB-500",
+    "spec": "10mg x1 vial",
+    "cost": 48,
+    "category": "Peptide",
+    "group": "Recovery",
+    "salePrice": 48
+  },
+  {
+    "sku": "TSM10",
+    "name": "Tesamorelin",
+    "spec": "10mg x1 vial",
+    "cost": 68,
+    "category": "Peptide",
+    "group": "Growth Hormone",
+    "salePrice": 68
+  },
+  {
+    "sku": "TSIP10",
+    "name": "Tesamorelin + Ipamorelin",
+    "spec": "10mg x1 vial",
+    "cost": 88,
+    "category": "Peptide",
+    "group": "Growth Hormone",
+    "salePrice": 88
+  },
+  {
+    "sku": "TA10",
+    "name": "Thymosin Alpha-1",
+    "spec": "10mg x1 vial",
+    "cost": 58,
+    "category": "Peptide",
+    "group": "Immune Research",
+    "salePrice": 58
+  },
+  {
+    "sku": "VIP10",
+    "name": "VIP",
+    "spec": "10mg x1 vial",
+    "cost": 58,
+    "category": "Peptide",
+    "group": "Research",
+    "salePrice": 58
+  },
+  {
+    "sku": "SM10",
+    "name": "Semaglutide",
+    "spec": "10mg x1 vial",
+    "cost": 48,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 48
+  },
+  {
+    "sku": "TR10",
+    "name": "Tirzepatide",
+    "spec": "10mg x1 vial",
+    "cost": 53,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 53
+  },
+  {
+    "sku": "RT10",
+    "name": "Retatrutide",
+    "spec": "10mg x1 vial",
+    "cost": 78,
+    "category": "Peptide",
+    "group": "Metabolic",
+    "salePrice": 78
+  }
+]

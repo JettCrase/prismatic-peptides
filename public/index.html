@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prismatic Peptides supplies research-use-only peptide compounds with clear vial specifications, purity-focused sourcing, and California fulfillment.">
+<title>Prismatic Peptides</title>
+<link rel="stylesheet" href="/css/style.css?v=prismatic-system-20260814">
+</head>
+<body class="home-page">
+
+<div class="flash-ribbon">
+  <strong>Orders above $100 ship next day</strong>
+</div>
+
+<div class="mountain-bg" aria-hidden="true">
+  <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#161a1f"/>
+        <stop offset="42%" stop-color="#333d47"/>
+        <stop offset="72%" stop-color="#5b5850"/>
+        <stop offset="100%" stop-color="#7a6650"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f0c589" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#f0c589" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="10"/>
+      </filter>
+    </defs>
+    <rect x="0" y="0" width="1600" height="900" fill="url(#sky)"/>
+    <g filter="url(#softBlur)">
+      <ellipse cx="1180" cy="430" rx="280" ry="200" fill="url(#glow)"/>
+      <path d="M0,420 L100,380 L220,410 L340,360 L460,400 L580,350 L700,390 L820,340 L940,385 L1060,345 L1180,395 L1300,355 L1420,400 L1600,370 L1600,900 L0,900 Z" fill="#5c6670" opacity="0.5"/>
+      <path d="M0,520 L120,470 L250,500 L380,450 L500,495 L640,440 L760,485 L880,430 L1000,480 L1140,435 L1260,490 L1400,445 L1600,480 L1600,900 L0,900 Z" fill="#414b52" opacity="0.68"/>
+      <path d="M0,620 L150,580 L300,610 L450,560 L600,605 L760,555 L900,600 L1050,550 L1200,595 L1350,560 L1600,600 L1600,900 L0,900 Z" fill="#262e33" opacity="0.85"/>
+      <path d="M0,760 L130,700 L260,740 L400,680 L540,730 L700,670 L860,725 L1020,665 L1180,720 L1340,680 L1600,715 L1600,900 L0,900 Z" fill="#12161a"/>
+    </g>
+  </svg>
+</div>
+<div class="mountain-scrim" aria-hidden="true"></div>
+
+<div id="entryGate" class="entry-gate">
+  <div class="entry-gate-box">
+    <div class="brand">Prismatic Peptides</div>
+    <h2>Research Use Only</h2>
+    <p>This site sells laboratory research compounds. They are not drugs, foods, cosmetics, or dietary supplements, and are not for human or veterinary use. By entering, you certify that:</p>
+    <ul>
+      <li>You are 21 years of age or older.</li>
+      <li>You are an independent research company or an independent researcher, purchasing solely for laboratory / research purposes.</li>
+      <li>You are NOT using these products for human consumption, injection, or administration of any kind.</li>
+    </ul>
+    <div class="entry-gate-actions">
+      <button id="entryAgreeBtn">I Certify the Above, Enter Site</button>
+      <button id="entryExitBtn" class="secondary">Exit</button>
+    </div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <header class="topbar">
+    <div class="brand prismatic-brand" id="siteName">
+      <span class="prism-mark" aria-hidden="true"><i></i><b></b></span>
+      <span>PRISMATIC<br><small>PEPTIDES</small></span>
+    </div>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/index.html#catalogSection" class="active">Shop</a>
+    </nav>
+    <div class="header-actions">
+      <button id="openProductSearch" class="nav-search-button" type="button" aria-label="Search products">
+        <span class="nav-search-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div id="productSearchOverlay" class="product-search-overlay" hidden>
+  <section class="product-search-dialog" role="dialog" aria-modal="true" aria-labelledby="productSearchTitle">
+    <div class="product-search-header">
+      <div>
+        <div class="product-search-eyebrow">Catalog search</div>
+        <h2 id="productSearchTitle">Find a research material</h2>
+      </div>
+      <button id="closeProductSearch" class="product-search-close" type="button" aria-label="Close search">&times;</button>
+    </div>
+    <label for="productSearchInput" class="sr-only">Search products</label>
+    <div class="product-search-input-wrap">
+      <span class="nav-search-icon" aria-hidden="true"></span>
+      <input id="productSearchInput" type="search" placeholder="Search peptide name, category, or vial strength" autocomplete="off">
+    </div>
+    <div id="productSearchStatus" class="product-search-status" aria-live="polite"></div>
+    <div id="productSearchResults" class="product-search-results"></div>
+  </section>
+</div>
+<section class="storefront-hero exceed-inspired-hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> High-quality research materials</div>
+    <h1 class="hero-title">Research-grade peptides<br><em>without the guesswork.</em></h1>
+    <p class="hero-sub">A clean Prismatic catalog for research-use-only peptides, transparent vial strengths, launch pricing, and fast U.S. order movement.</p>
+    <div class="hero-actions">
+      <button class="hero-cta" id="heroCatalogBtn">Start Research Order</button>
+      <button class="hero-ghost" id="heroSearchBtn" type="button">Shop Now</button>
+    </div>
+    <div class="hero-token-row" aria-label="Catalog keywords">
+      <span>Peptides</span>
+      <span>Aminos</span>
+      <span>Research</span>
+    </div>
+  </div>
+
+  <aside class="hero-vial-stage" aria-label="Prismatic Peptides research vial">
+    <div class="hero-vial-card">
+      <div class="hero-vial-glow" aria-hidden="true"></div>
+      <div class="hero-vial-media photo sku-mockup" aria-hidden="true">
+        <img class="sku-mockup-img prismatic-vial-image" src="/images/product-mockups/prismatic-vial-template.png" alt="">
+        <span class="prismatic-vial-label"><span class="vial-prism-mark" aria-hidden="true"></span><i>PRISMATIC PEPTIDES</i><strong>RETATRUTIDE</strong></span>
+      </div>
+      <div class="hero-vial-caption">
+        <strong>Prismatic Series</strong>
+        <span>Research use only</span>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="ruo-banner">
+  FOR LABORATORY / RESEARCH USE ONLY. NOT FOR HUMAN OR VETERINARY USE. NOT A DRUG, FOOD, OR COSMETIC.
+</div>
+
+<main class="storefront-main">
+  <section class="storefront-section home-category-section">
+    <div class="section-heading centered-heading">
+      <span>Browse Categories</span>
+      <h2>Shop by research category.</h2>
+      <p>Jump into the main product lanes customers look for first, then open the full catalog when you know exactly what you need.</p>
+    </div>
+    <div class="category-grid home-category-grid">
+      <button class="category-tile" type="button" data-group-jump="Metabolic">
+        <span>01</span>
+        <strong>Metabolic</strong>
+        <em>GLP/GIP and metabolic-pathway research compounds.</em>
+      </button>
+      <button class="category-tile" type="button" data-group-jump="Growth Hormone">
+        <span>02</span>
+        <strong>Growth Hormone</strong>
+        <em>GHRH, GHRP, and endocrine-axis research peptides.</em>
+      </button>
+      <button class="category-tile" type="button" data-group-jump="Recovery">
+        <span>03</span>
+        <strong>Recovery</strong>
+        <em>Compounds commonly studied in tissue repair pathways.</em>
+      </button>
+      <button class="category-tile" type="button" data-group-jump="Skin & Recovery">
+        <span>04</span>
+        <strong>Skin & Recovery</strong>
+        <em>Copper-binding and repair-focused research materials.</em>
+      </button>
+    </div>
+  </section>
+
+  <section class="trusted-research-section">
+    <div class="trusted-copy-card">
+      <span class="section-kicker">Trusted Research Compounds</span>
+      <h2>Focused catalog, polished fulfillment, research-only positioning.</h2>
+      <p>Prismatic Peptides keeps each product card direct: compound name, vial strength, price, and order path. No wellness framing, no confusing extras.</p>
+      <a class="section-link" href="/index.html#catalogSection">Discover the catalog</a>
+    </div>
+    <div class="trusted-copy-card accent-card">
+      <span class="section-kicker">Order Desk</span>
+      <h2>Orders above $100 ship next day.</h2>
+      <p>Flat $10 U.S. shipping, crypto checkout, and clear exact-payment instructions built into the cart flow.</p>
+      <a class="section-link" href="/cart.html">Review cart</a>
+    </div>
+  </section>
+
+  <section class="storefront-section best-sellers-priority">
+    <div class="split-heading">
+      <div class="section-heading">
+        <span>Our Best Sellers</span>
+        <h2>Start with high-demand research materials.</h2>
+        <p>A compact shelf of Prismatic vials with direct add-to-cart flow.</p>
+      </div>
+      <a class="section-link" href="/index.html#catalogSection">View full catalog</a>
+    </div>
+    <div id="bestSellersGrid" class="grid featured-grid"></div>
+  </section>
+
+  <section id="catalogSection" class="catalog-shell">
+    <div class="catalog-heading-row">
+      <div class="section-heading">
+        <span>Full Catalog</span>
+        <h2>Complete Prismatic catalog.</h2>
+        <p>Filter by category, open product details, or search by peptide name and vial strength.</p>
+      </div>
+      <button class="hero-ghost compact" id="catalogSearchShortcut" type="button">Search catalog</button>
+    </div>
+
+    <div id="filterChips" class="filter-chips"></div>
+    <div id="catalogGrid" class="grid"></div>
+    <div id="catalogEmpty" class="catalog-empty" hidden>
+      <h3>No compounds found</h3>
+      <p>Try another name, category, or specification.</p>
+    </div>
+  </section>
+
+  <section class="quality-split homepage-final-split">
+    <div>
+      <span class="section-kicker">Prismatic Quality</span>
+      <h2>Everything built around clear vial identity.</h2>
+      <p>Every product page keeps the corresponding peptide name and Prismatic vial branding visible, with research-use-only checkout certification before payment instructions are shown.</p>
+      <a class="section-link" href="/index.html#catalogSection">Shop now</a>
+    </div>
+    <div class="quality-vials photo sku-mockup" aria-hidden="true">
+      <img class="sku-mockup-img prismatic-vial-image" src="/images/product-mockups/prismatic-vial-template.png" alt="">
+      <span class="prismatic-vial-label"><span class="vial-prism-mark" aria-hidden="true"></span><i>PRISMATIC PEPTIDES</i><strong>BPC-157</strong></span>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">PRISMATIC PEPTIDES</div>
+  <p>All products are sold for laboratory, research, or analytical purposes only and are not for human or veterinary use, consumption, or administration of any kind. Not evaluated by the FDA.</p>
+  <div class="footer-links">
+    <a href="/index.html#catalogSection">Catalog</a>
+  </div>
+</footer>
+
+<script src="/js/shared.js?v=sku-img-elements-20260729"></script>
+<script src="/js/app.js?v=sku-img-elements-20260729"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
